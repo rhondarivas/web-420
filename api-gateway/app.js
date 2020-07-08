@@ -1,33 +1,11 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-
-
-var index = require('./routes/index');
-
-
-var app = express();
-
-/**
- *
- * Database connection
- */
-mongoose.connect('mongodb://admin:admin@ds125578.mlab.com:25578/api-gateway', {
-    promiseLibrary: require('bluebird')
-}).then ( () => console.log('connection successful'))
-  .catch( (err) => console.error(err));
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-
+/*============================================
+; Title: rivas -assignment1.4
+; Author: Richard Krasso
+; Date: 7 July 2020
+; Modified By: Rhonda Rivas
+; Description: Demonstrates api's
+===========================================
+*/
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
