@@ -14,7 +14,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var indexRouter = require('./routes/index');
-
+var apiCatalog = require('./routes/api-catalog');
 var app = express();
 
 //database connection
@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/api', apiCatalog);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
