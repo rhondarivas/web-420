@@ -6,26 +6,20 @@
 ; Description: Demonstrates Mongoose Models
 ==============================================
 */
-// Require statements
-const mongoose = require('mongoose');
-
-const Schema = mongoose.Schema;
-
-// Schema
-let UserSchema = new Schema({
-  username: {type: String, required: true },
-  password: {type: String, required: true},
-  email: {type: String, required: true}
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var userSchema = new Schema({
+username: {type: String, required: true},
+password: {type: String, required: true},
+email: {type: String, required: true}
 });
-
-// Export the model to make it available publicly.
-module.exports = mongoose.model('User', UserSchema);
-//user.save is used to add new user in our database
+const User = module.exports = mongoose.model('User', userSchema);
+//user.save is used to add a new user in our database
 module.exports.add = (user, callback) => {
-  user.save(callback);
+    user.save(callback);
 };
-// geyByID function
+//getById
 module.exports.getById = (id, callback) => {
-  var query = {_id: id};
-  UserSchema.findById(query, callback);
-;}
+    var query = {_id: id};
+    User.findById(query, callback);
+};
